@@ -7,8 +7,10 @@ export const LOGO_URL = "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCE
 export const SWIGGY_API_URL = `https://corsproxy.io/?https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9352403&lng=77.624532&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING`;
 
 //  Swiggy API for to get Restaurant Item 
-export const MENU_API_URL = `https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=12.9046136&lng=77.614948&restaurantId=`;
-
+export const MENU_API_URL = (resId) =>
+  `https://corsproxy.io/?${encodeURIComponent(
+    `https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=12.9352403&lng=77.624532&restaurantId=${resId}`
+  )}`;
 
 // Swiggy Restaurant Path 
 export const SWIGGY_REST_API_PATH = `data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants`;

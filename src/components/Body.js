@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import RestaurantCard from "./RestaurantCard";
 import Shimmer from "./Shimmer";
+import { Link } from "react-router";
 import {
   SWIGGY_API_URL,
   SWIGGY_REST_API_PATH,
@@ -24,7 +25,9 @@ const Body = () => {
       console.error("Error fetching data:", error);
     }
   };
-
+//if there is no dependency param -- calls every time on render
+//if [] dependency executes only on load of that component
+// if [xyz] -- renders everytime xyz changes
   useEffect(() => {
     fetchData();
   }, []);
@@ -59,7 +62,7 @@ const Body = () => {
       <div className="restaurant-container">
         {filteredRestaurants.length !== 0 ? (
           filteredRestaurants.map((restaurant) => (
-            <RestaurantCard key={restaurant?.info?.id} resData={restaurant}/>
+            <Link key={restaurant?.info?.id} to={"/restaurants/" + restaurant?.info?.id}><RestaurantCard  resData={restaurant}/></Link>
           ))
         ) : (
           <h2>Sorry, we couldn't find any restaurant for "{restaurantName}"</h2>
