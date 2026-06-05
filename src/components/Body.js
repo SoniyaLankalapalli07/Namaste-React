@@ -6,6 +6,7 @@ import {
   SWIGGY_API_URL,
   SWIGGY_REST_API_PATH,
 } from "../utils/constant";
+import useOnlineStatus from "../utils/useOnlineStatus";
 
 const Body = () => {
   const [restaurantList, setRestaurantList] = useState([]);
@@ -42,6 +43,10 @@ const Body = () => {
     setRestaurantName(searchRestaurant);
   };
 
+  const online = useOnlineStatus();
+  if (!online){
+    return <h1 style={{padding: "150px"}}>Looks like you are offline. Please check internet connection.</h1>
+  }
   // Conditional rendering using ternary operator
   return restaurantList.length === 0 ? (
     <Shimmer />

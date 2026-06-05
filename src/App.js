@@ -1,4 +1,4 @@
-import React from "react";
+import React, {lazy, Suspense}from "react";
 import ReactDOM from "react-dom/client";
 import Header from "./components/Header";
 import Body from "./components/Body";
@@ -6,6 +6,9 @@ import { createBrowserRouter, RouterProvider, Outlet } from "react-router";
 import About from "./components/About";
 import Error from "./components/Error";
 import Menu from "./components/Menu";
+// import Grocery from "./components/Grocery";
+//Chunking, codesplitting, lazy loading, dynamic bundling, on demand loading
+const Grocery = lazy(()=> import("./components/Grocery"));
 
 // Footer component for footer section
 const Footer = () => {
@@ -47,6 +50,10 @@ const appRouter = createBrowserRouter([
       {
         path:"/about",
         element:<About />
+      },
+      {
+        path:"/grocery",
+        element:<Suspense fallback={<h1 style={{"padding":"150px"}}>Loading...</h1>}><Grocery /></ Suspense>
       },
       {
         path:"/restaurants/:resId",
