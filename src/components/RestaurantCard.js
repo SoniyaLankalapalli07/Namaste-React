@@ -13,17 +13,17 @@ const RestaurantCard = (props) => {
   } = resData?.info;
 
   return (
-    <div className="restaurant-card">
+    <div className="m-4 p-4 w-65 bg-gray-100 rounded-lg hover:bg-gray-200">
       <img
         src={
           CDN_URL +
           cloudinaryImageId
         }
         alt={name}
-        className="restaurant-logo"
+        className="rounded-lg"
       />
       <div className="restaurant-details">
-        <h3 className="restaurant-name">
+        <h3 className="font-bold py-3 text-lg">
           {name.slice(0, 22)}
           {name.length > 22 ? "..." : ""}
         </h3>

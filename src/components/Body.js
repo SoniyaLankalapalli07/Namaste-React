@@ -52,19 +52,20 @@ const Body = () => {
     <Shimmer />
   ) : (
     <div className="body">
-      <div className="search-box">
+      <div className="search m-4 p-4 ">
         <input
+          className="border border-solid border-black m-4"
           type="text"
           value={searchRestaurant}
           onChange={(e) => setSearchRestaurant(e.target.value)}
           placeholder="search a restaurant you want..."
         />
-        <button className="search" onClick={handleSearch}>
+        <button className="px-4  bg-green-100" onClick={handleSearch}>
           Search
         </button>
       </div>
 
-      <div className="restaurant-container">
+      <div className="flex flex-wrap">
         {filteredRestaurants.length !== 0 ? (
           filteredRestaurants.map((restaurant) => (
             <Link key={restaurant?.info?.id} to={"/restaurants/" + restaurant?.info?.id}><RestaurantCard  resData={restaurant}/></Link>
